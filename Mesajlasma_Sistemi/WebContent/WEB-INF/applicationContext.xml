@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<annotation-driven />
+	<context:component-scan
+		base-package="com.huseyinaydin" />
+	<resources mapping="/resources/**" location="/resources/" />
+
+
+	<beans:bean id="dataSource" scope="singleton"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<beans:property name="url"
+			value="jdbc:mysql://localhost:3306/mesajlasma_sistemi?createDatabaseIfNotExist=true&amp;characterEncoding=utf8" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="toor" />
+	</beans:bean>
+
+
+	<beans:bean id="hibernate5AnnotatedSessionFactory" scope="session"
+	 class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+	 <aop:scoped-proxy />
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="mappingLocations">
+			<beans:list>
+				<beans:value>classpath:/com/huseyinaydin/model/Person.hbm.xml
+				</beans:value>
+				<beans:value>classpath:/com/huseyinaydin/model/Message.hbm.xml
+				</beans:value>
+				<beans:value>classpath:/com/huseyinaydin/model/Commit.hbm.xml
+				</beans:value>
+				<beans:value>classpath:/com/huseyinaydin/model/FriendRequest.hbm.xml
+				</beans:value>
+				<beans:value>classpath:/com/huseyinaydin/model/Share.hbm.xml
+				</beans:value>
+				<beans:value>classpath:/com/huseyinaydin/model/ShareImage.hbm.xml
+				</beans:value>
+
+				<beans:value>classpath:/com/huseyinaydin/model/ShareCommit.hbm.xml
+				</beans:value>
+				<beans:value>classpath:/com/huseyinaydin/model/ShareCR.hbm.xml
+				</beans:value>
+				<beans:value>classpath:/com/huseyinaydin/model/Like.hbm.xml
+				</beans:value>
+				<!-- <beans:value>org.turkeyjug.model.PersonelMeslek</beans:value> -->
+			</beans:list>
+		</beans:property>
+		<beans:property name="hibernateProperties">
+			<beans:props>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</beans:prop>
+				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
+				<!-- Hibernate cache kısmı -->
+				<beans:prop key="hibernate.cache.region_prefix">hibernate.test</beans:prop>
+				<beans:prop key="hibernate.cache.use_query_cache">true</beans:prop>
+				<beans:prop key="hibernate.cache.use_second_level_cache">true</beans:prop>
+				<beans:prop key="hibernate.cache.use_structured_entries">true</beans:prop>
+				<beans:prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</beans:prop>
+				<beans:prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</beans:prop>
+				<!-- <beans:prop key="net.sf.ehcache.configurationResourceName">ehcache.xml</beans:prop> -->
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
+
+	<beans:bean id="personDAO"
+		class="com.huseyinaydin.dao.PersonDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+		<beans:property name="mySession" ref="mySession" />
+	</beans:bean>
+
+	<beans:bean id="personService"
+		class="com.huseyinaydin.service.PersonServiceImpl">
+		<beans:property name="personDAO" ref="personDAO" />
+	</beans:bean>
+
+	<beans:bean id="mySession" scope="session"
+		class="com.huseyinaydin.session.MySession">
+		<aop:scoped-proxy />
+	</beans:bean>
+
+	<beans:bean id="searchDAO"
+		class="com.huseyinaydin.dao.SearchDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="searchService"
+		class="com.huseyinaydin.service.SearchServiceImpl">
+		<beans:property name="searchDAO" ref="searchDAO" />
+	</beans:bean>
+
+	<beans:bean id="searchResources"
+		class="com.huseyinaydin.resources.SearchResources">
+		<beans:property name="searchService"
+			ref="searchService" />
+	</beans:bean>
+
+	<beans:bean id="personResources"
+		class="com.huseyinaydin.resources.PersonResources">
+		<beans:property name="personService"
+			ref="personService" />
+	</beans:bean>
+
+	<beans:bean id="loginDAO"
+		class="com.huseyinaydin.dao.LoginDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="loginService"
+		class="com.huseyinaydin.service.LoginServiceImpl">
+		<beans:property name="loginDAO" ref="loginDAO" />
+	</beans:bean>
+
+	<beans:bean id="messageDAO"
+		class="com.huseyinaydin.dao.MessageDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+		<beans:property name="personService"
+			ref="personService" />
+	</beans:bean>
+
+	<beans:bean id="messageService"
+		class="com.huseyinaydin.service.MessageServiceImpl">
+		<beans:property name="messageDAO" ref="messageDAO" />
+	</beans:bean>
+
+	<beans:bean id="commitDAO"
+		class="com.huseyinaydin.dao.CommitDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="commitService"
+		class="com.huseyinaydin.service.CommitServiceImpl">
+		<beans:property name="commitDAO" ref="commitDAO" />
+	</beans:bean>
+
+	<beans:bean id="fileUpload"
+		class="com.huseyinaydin.fileupload.FileUpload">
+		<beans:property name="mySession" ref="mySession" />
+	</beans:bean>
+
+
+	<beans:bean id="profileDAO"
+		class="com.huseyinaydin.dao.ProfileDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="profileService"
+		class="com.huseyinaydin.service.ProfileServiceImpl">
+		<beans:property name="profileDAO" ref="profileDAO" />
+	</beans:bean>
+
+	<beans:bean id="friendDAO"
+		class="com.huseyinaydin.dao.FriendDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="friendService"
+		class="com.huseyinaydin.service.FriendServiceImpl">
+		<beans:property name="friendDAO" ref="friendDAO" />
+	</beans:bean>
+
+	<beans:bean id="shareDAO"
+		class="com.huseyinaydin.dao.ShareDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="shareService"
+		class="com.huseyinaydin.service.ShareServiceImpl">
+		<beans:property name="shareDAO" ref="shareDAO" />
+	</beans:bean>
+
+	<beans:bean id="shareCommitDAO"
+		class="com.huseyinaydin.dao.ShareCommitDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="shareCommitService"
+		class="com.huseyinaydin.service.ShareCommitServiceImpl">
+		<beans:property name="shareCommitDAO"
+			ref="shareCommitDAO" />
+	</beans:bean>
+
+	<beans:bean id="shareCRDAO"
+		class="com.huseyinaydin.dao.ShareCRDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="shareCRService"
+		class="com.huseyinaydin.service.ShareCRServiceImpl">
+		<beans:property name="shareCRDAO" ref="shareCRDAO" />
+	</beans:bean>
+
+	<beans:bean id="likeDAO"
+		class="com.huseyinaydin.dao.LikeDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="likeService"
+		class="com.huseyinaydin.service.LikeServiceImpl">
+		<beans:property name="likeDAO" ref="likeDAO" />
+	</beans:bean>
+
+	<beans:bean id="notificationDAO"
+		class="com.huseyinaydin.dao.NotificationDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="notificationService"
+		class="com.huseyinaydin.service.NotificationServiceImpl">
+		<beans:property name="notificationDAO"
+			ref="notificationDAO" />
+	</beans:bean>
+
+
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+	<beans:bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<beans:property name="sessionFactory"
+			ref="hibernate5AnnotatedSessionFactory" />
+	</beans:bean>
+
+</beans:beans>

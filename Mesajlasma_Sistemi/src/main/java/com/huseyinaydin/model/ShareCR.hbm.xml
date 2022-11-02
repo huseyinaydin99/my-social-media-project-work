@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.huseyinaydin.model.ShareCR" table="share_cr"
+		catalog="mesajlasma_sistemi">
+		<cache usage="read-write" />
+		<id name="shareCR_Id" type="java.lang.Long">
+			<column name="share_cr_Id" />
+			<generator class="identity" />
+		</id>
+
+		<property name="shareCRText" type="string">
+			<column name="share_cr_text" length="50" not-null="true" />
+		</property>
+
+		<many-to-one name="person"
+			class="com.huseyinaydin.model.Person" fetch="select">
+			<column name="person_id" not-null="true" />
+		</many-to-one>
+
+		<many-to-one name="share"
+			class="com.huseyinaydin.model.Share" fetch="select">
+			<column name="share_id" not-null="true" />
+		</many-to-one>
+
+		<many-to-one name="shareCommit"
+			class="com.huseyinaydin.model.ShareCommit" fetch="select">
+			<column name="share_commit_id" not-null="true" />
+		</many-to-one>
+		
+		<property name="gorulme_Durumu" type="yes_no">
+			<column name="gorulme_durumu" not-null="true" />
+		</property>
+
+		<property name="duzenleDurum" type="yes_no">
+			<column name="duzenle_Durum" not-null="true" default="false" />
+		</property>
+	</class>
+</hibernate-mapping>

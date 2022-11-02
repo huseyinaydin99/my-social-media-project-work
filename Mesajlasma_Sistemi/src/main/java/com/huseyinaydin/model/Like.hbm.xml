@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.huseyinaydin.model.Likex" table="likex"
+		catalog="mesajlasma_sistemi">
+		<cache usage="read-write" />
+		<id name="like_Id" type="java.lang.Long">
+			<column name="like_id" />
+			<generator class="identity" />
+		</id>
+
+		<many-to-one name="share"
+			class="com.huseyinaydin.model.Share" fetch="select">
+			<column name="share_id" not-null="true" />
+		</many-to-one>
+
+		<many-to-one name="person"
+			class="com.huseyinaydin.model.Person" fetch="select">
+			<column name="person_id" not-null="true" />
+		</many-to-one>
+
+		<property name="gorulme_Durumu" type="yes_no">
+			<column name="gorulme_durumu" not-null="true" />
+		</property>
+
+	</class>
+</hibernate-mapping>

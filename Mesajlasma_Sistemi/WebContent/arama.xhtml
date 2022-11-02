@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Arama</title>
+	<style type="text/css">
+@charset "iso-8859-9";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#anadiv {
+	height: 100%;
+	width: 100%;
+}
+
+#icanadiv {
+	height: 1024px;
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#baslik {
+	float: left;
+	height: 50px;
+	width: 100%;
+	background-color: #185886;
+}
+
+#icbaslik {
+	height: 50px;
+	width: 1074px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#logo {
+	float: left;
+	height: 50px;
+	width: 100px;
+}
+
+#arama {
+	float: left;
+	height: 50px;
+	width: 424px;
+}
+
+#orta {
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+	min-height: 100%;
+	height: 94vh;
+}
+
+#alt {
+	float: left;
+	height: 6vh;
+	width: 100%;
+	background-color: #185886;
+}
+
+#arkadaslik_istekleri {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/friend_requesting.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#anadiv #baslik #icbaslik #arkadaslik_istekleri .zıfir {
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #F00;
+	font-weight: bolder;
+	font-size: 12pt;
+	font-style: normal;
+	text-transform: capitalize;
+}
+
+#anadiv #baslik #icbaslik #arkadaslik_istekleri .sifir {
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #F00;
+	font-weight: bolder;
+	font-size: 12pt;
+	font-style: normal;
+	text-transform: capitalize;
+}
+
+#mektup {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/message.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#notification {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/notification.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#isim {
+	float: left;
+	height: 50px;
+	width: 132px;
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+}
+
+#anadiv #baslik #icbaslik #isim .link {
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+	font-weight: normal;
+}
+
+#cikis {
+	float: left;
+	height: 50px;
+	width: 200px;
+}
+
+#anadiv #baslik #icbaslik #arama #icarama {
+	height: 50px;
+	width: 400px;
+	margin-left: 11px;
+	margin-top: 6px;
+}
+
+.iSayi {
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	color: #F00;
+	text-decoration: none;
+	float: left;
+	height: 20px;
+	width: 50px;
+	margin-top: 16px;
+	text-align: right;
+}
+
+a {
+	color: #F00;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:active {
+	text-decoration: none;
+	color: #F00;
+}
+    </style>
+</h:head>
+<h:body>
+	<h:form enctype="multipart/form-data">
+		<p:growl id="messages" showDetail="true" />
+
+		<div id="anadiv">
+			<div id="baslik">
+				<div id="icbaslik">
+					<div id="logo">
+						<h:commandLink action="anasayfa">
+							<h:graphicImage value="/resources/images/logo.png" />
+						</h:commandLink>
+					</div>
+					<div id="arama">
+						<div id="icarama">
+							<table>
+								<tr>
+									<td><p:keyboard size="30" style="font-size:13pt"
+											value="#{searchModel.word}" /></td>
+									<td><h:commandButton
+											action="#{searchResources.initPersons(searchModel)}"
+											image="/resources/images/person_search.png" /></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id="isim">
+						<a class="link" href="profilim.jsf">#{mySession.person.person_Adi}
+							#{mySession.person.person_Soyadi}</a>
+					</div>
+					<div id="arkadaslik_istekleri">
+						<div class="iSayi">
+							<h:commandLink action="arkadaslikistekleri?faces-redirect=true"
+								value="#{friendService.getMyFriendRequestCount(mySession.getPerson().person_Id)}" />
+						</div>
+
+					</div>
+					<div id="mektup">
+						<div class="iSayi">
+							<h:commandLink action="gelenvegidenkutusu?faces-redirect=true"
+								value="#{messageService.mesajlarToplaminiAl()}" />
+						</div>
+					</div>
+					<div id="notification">
+					<div class="iSayi">
+							<h:commandLink action="bildirimler?faces-redirect=true"
+								value="#{notificationService.getNotificationCount()}" />
+					</div>
+				</div>
+
+					<div id="cikis">
+					<h:form>
+						<h:commandButton action="#{mySession.destroy()}"
+							image="/resources/images/exit.png" />
+							</h:form>
+					</div>
+				</div>
+			</div>
+			<div id="orta">
+				<br />
+				<c:if test="#{not empty searchResources.persons}">
+					<p:dataList value="#{searchResources.persons}" var="person">
+						<f:facet name="header">
+            		Profiller
+        		</f:facet>
+						<h:graphicImage width="120" value="#{person.profilFotosunuVer()}" />
+						<h:commandLink action="#{mySession.git(person.person_Id)}">
+        			#{person.person_Adi} #{person.person_Soyadi}
+        		</h:commandLink>
+					</p:dataList>
+				</c:if>
+			</div>
+			<div id="alt"></div>
+		</div>
+	</h:form>
+</h:body>
+
+</html>
+

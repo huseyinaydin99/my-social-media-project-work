@@ -1,0 +1,524 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Anasayfa</title>
+	<style type="text/css">
+@charset "iso-8859-9";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#anadiv {
+	height: 100%;
+	width: 100%;
+}
+
+#icanadiv {
+	height: 1024px;
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#baslik {
+	float: left;
+	height: 50px;
+	width: 100%;
+	background-color: #185886;
+}
+
+#icbaslik {
+	height: 50px;
+	width: 1074px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#logo {
+	float: left;
+	height: 50px;
+	width: 100px;
+}
+
+#arama {
+	float: left;
+	height: 50px;
+	width: 424px;
+}
+
+#orta {
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+	min-height: 100%;
+	height: 94vh;
+}
+
+#alt {
+	float: left;
+	height: 6vh;
+	width: 100%;
+	background-color: #185886;
+}
+
+#arkadaslik_istekleri {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/friend_requesting.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#anadiv #baslik #icbaslik #arkadaslik_istekleri .zıfir {
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #F00;
+	font-weight: bolder;
+	font-size: 12pt;
+	font-style: normal;
+	text-transform: capitalize;
+}
+
+#anadiv #baslik #icbaslik #arkadaslik_istekleri .sifir {
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #F00;
+	font-weight: bolder;
+	font-size: 12pt;
+	font-style: normal;
+	text-transform: capitalize;
+}
+
+#mektup {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/message.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#notification {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/notification.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#isim {
+	float: left;
+	height: 50px;
+	width: 132px;
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+}
+
+#anadiv #baslik #icbaslik #isim .link {
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+	font-weight: normal;
+}
+
+#cikis {
+	float: left;
+	height: 50px;
+	width: 200px;
+}
+
+#anadiv #baslik #icbaslik #arama #icarama {
+	height: 50px;
+	width: 400px;
+	margin-left: 11px;
+	margin-top: 6px;
+}
+
+.iSayi {
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	color: #F00;
+	text-decoration: none;
+	float: left;
+	height: 20px;
+	width: 50px;
+	margin-top: 16px;
+	text-align: right;
+}
+
+a {
+	color: #F00;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:active {
+	text-decoration: none;
+	color: #F00;
+}
+
+#paylasim_yap {
+	float: left;
+	height: 350px;
+	width: 724px;
+	margin-top: 50px;
+}
+
+#paylasimlar {
+	float: left;
+	height: auto;
+	width: 724px;
+}
+
+#paylasim {
+	height: 650px;
+	width: 600px;
+	margin-right: auto;
+	margin-top: 7px;
+	margin-bottom: 7px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12pt;
+	color: #000;
+	text-decoration: none;
+	font-weight: normal;
+	background-color: #FFF;
+}
+
+#paylasim_islem {
+	float: left;
+	height: auto;
+	width: 600px;
+	background-color: #FFF;
+}
+
+#paylasim_begen {
+	float: left;
+	height: 80px;
+	width: 600px;
+}
+
+#paylasim_logo {
+	float: left;
+	height: auto;
+	width: 600px;
+	margin-top: 5px;
+}
+
+#paylasim_yorum {
+	float: left;
+	height: 200px;
+	width: 600px;
+}
+
+#paylasim_baslik {
+	float: left;
+	height: 150px;
+	width: 600px;
+}
+
+#paylasim_orta {
+	float: left;
+	height: 450px;
+	width: 600px;
+}
+
+#paylasim_profil_resmi {
+	float: left;
+	height: 150px;
+	width: 150px;
+	margin-right: 5px;
+}
+
+#paylasim_isimsoyisim {
+	float: left;
+	height: 150px;
+	width: 250px;
+}
+
+#paylasim_sil_duzenle {
+	float: left;
+	height: 150px;
+	width: 190px;
+	margin-left: 5px;
+}
+
+#paylasim_yazisi {
+	float: left;
+	height: auto;
+	width: 600px;
+	margin-bottom: 5px;
+}
+
+#paylasim_resmi {
+	float: left;
+	height: auto;
+	width: 600px;
+}
+
+body {
+	background-color: #EBEBEB;
+}
+    </style>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+	</h:form>
+	<div id="anadiv">
+		<div id="baslik">
+			<div id="icbaslik">
+				<div id="logo">
+					<h:form>
+						<h:commandLink action="anasayfa">
+							<h:graphicImage value="/resources/images/logo.png" />
+						</h:commandLink>
+					</h:form>
+				</div>
+				<div id="arama">
+					<div id="icarama">
+						<h:form>
+							<table>
+								<tr>
+									<td><p:keyboard size="30" style="font-size:13pt"
+											value="#{searchModel.word}" /></td>
+									<td><h:commandButton
+											action="#{searchResources.initPersons(searchModel)}"
+											image="/resources/images/person_search.png" /></td>
+								</tr>
+							</table>
+						</h:form>
+					</div>
+				</div>
+				<div id="isim">
+					<a class="link" href="profilim.jsf">#{mySession.person.person_Adi}
+						#{mySession.person.person_Soyadi}</a>
+				</div>
+				<div id="arkadaslik_istekleri">
+					<div class="iSayi">
+						<h:form>
+							<h:commandLink action="arkadaslikistekleri?faces-redirect=true"
+								value="#{friendService.getMyFriendRequestCount(mySession.getPerson().person_Id)}" />
+						</h:form>
+					</div>
+				</div>
+				<div id="mektup">
+					<div class="iSayi">
+						<h:form>
+							<h:commandLink action="gelenvegidenkutusu?faces-redirect=true"
+								value="#{messageService.mesajlarToplaminiAl()}" />
+						</h:form>
+					</div>
+				</div>
+                <div id="notification">
+					<div class="iSayi">
+						<h:form>
+							<h:commandLink action="bildirimler?faces-redirect=true"
+								value="#{notificationService.getNotificationCount()}" />
+						</h:form>
+					</div>
+				</div>
+
+
+				<div id="cikis">
+					<h:form>
+						<h:commandButton action="#{mySession.destroy()}"
+							image="/resources/images/exit.png" />
+					</h:form>
+				</div>
+			</div>
+		</div>
+		<div id="orta">
+			<c:if test="#{notificationService.getUnseenLikes().size() > 0}">
+			Yeni Görülen Beğeniler : 
+				<p:dataTable id="tbl" var="likex"
+					value="#{notificationService.getUnseenLikes()}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" rows="10" style="margin-bottom:20px">
+
+					 <p:column>
+						<f:facet name="header">
+							<h:outputText value="Beğeni" />
+						</f:facet>
+						#{personService.personuAl(likex.person.person_Id).person_Adi} #{personService.personuAl(likex.person.person_Id).person_Soyadi} tarafından şu paylaşıma <h:form><h:commandLink action="#{mySession.git3(likex.share.share_Id)}" value="#{shareService.getShare(likex.share.share_Id).share_Text}" /></h:form> bir beğeni aldınız!
+					</p:column>
+					
+				</p:dataTable>
+				<br></br>
+				<br></br>
+				<hr></hr>
+			</c:if>
+			
+			<c:if test="#{notificationService.getUnseenShareCommit().size() > 0}">
+			Yeni Görülen Yorumlar : 
+				<p:dataTable id="tbl2" var="shareCommit"
+					value="#{notificationService.getUnseenShareCommit()}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" rows="10" style="margin-bottom:20px">
+
+					 <p:column>
+						<f:facet name="header">
+							<h:outputText value="Yorum" />
+						</f:facet>
+						#{personService.personuAl(shareCommit.person.person_Id).person_Adi} #{personService.personuAl(shareCommit.person.person_Id).person_Soyadi} kişisi şu paylaşımda <h:form> <h:commandLink action="#{mySession.git3(shareCommit.share.share_Id)}" value="#{shareService.getShare(shareCommit.share.share_Id).share_Text}" /> </h:form> şu yorumu yaptı : #{shareCommit.shareCommitText}
+					</p:column>
+					
+				</p:dataTable>
+				<br></br>
+				<br></br>
+				<hr></hr>
+			</c:if>
+			
+			<c:if test="#{notificationService.getUnseenShareCR().size() > 0}">
+			Yeni Görülen Yorumlara verilen cevaplar : 
+				<p:dataTable id="tbl3" var="shareCR"
+					value="#{notificationService.getUnseenShareCR()}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" rows="10" style="margin-bottom:20px">
+
+					 <p:column>
+						<f:facet name="header">
+							<h:outputText value="Yorum" />
+						</f:facet>
+						
+						#{personService.personuAl(shareCR.person.person_Id).person_Adi} #{personService.personuAl(shareCR.person.person_Id).person_Soyadi} kişisi şu paylaşımda <h:form><h:commandLink action="#{mySession.git3(shareCR.share.share_Id)}" value="#{shareService.getShare(shareCR.share.share_Id).share_Text}" /></h:form> şu yorumu yaptı : #{shareCR.shareCRText}
+					</p:column>
+					
+				</p:dataTable>
+			</c:if>
+			
+			<c:if test="#{notificationService.getFriendShareUnSeenCommit().size() > 0}">
+			Başkasına Ait Paylaşım'a Ait Yeni Görülen Yorumlara Verilen Cevaplar : 
+				<p:dataTable id="tbl7" var="shareCR"
+					value="#{notificationService.getFriendShareUnSeenCommit()}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" rows="10" style="margin-bottom:20px">
+
+					 <p:column>
+						<f:facet name="header">
+							<h:outputText value="Yorum" />
+						</f:facet>
+						
+						#{personService.personuAl(shareCR.person.person_Id).person_Adi} #{personService.personuAl(shareCR.person.person_Id).person_Soyadi} kişisi şu paylaşımda <h:form><h:commandLink action="#{mySession.git3(shareCR.share.share_Id)}" value="#{shareService.getShare(shareCR.share.share_Id).share_Text}" /></h:form> şu yorumu yaptı : #{shareCR.shareCRText}
+					</p:column>
+					
+				</p:dataTable>
+			</c:if>
+			
+			<c:if test="#{notificationService.getSeenLikes().size() > 0}">
+			Eski Beğeniler : 
+				<p:dataTable id="tbl4" var="likex"
+					value="#{notificationService.getSeenLikes()}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" rows="10" style="margin-bottom:20px">
+					 <p:column>
+						<f:facet name="header">
+							<h:outputText value="Beğeni" />
+						</f:facet>
+						#{personService.personuAl(likex.person.person_Id).person_Adi} #{personService.personuAl(likex.person.person_Id).person_Soyadi} tarafından şu paylaşıma <h:form><h:commandLink action="#{mySession.git3(likex.share.share_Id)}" value="#{shareService.getShare(likex.share.share_Id).share_Text}" /></h:form> bir beğeni aldınız!
+					</p:column>
+					
+				</p:dataTable>
+				<br></br>
+				<br></br>
+				<hr></hr>
+			</c:if>
+			
+			<c:if test="#{notificationService.getSeenShareCommit().size() > 0}">
+			Eski Yorumlar : 
+				<p:dataTable id="tbl5" var="shareCommit"
+					value="#{notificationService.getSeenShareCommit()}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" rows="10" style="margin-bottom:20px">
+
+					 <p:column>
+						<f:facet name="header">
+							<h:outputText value="Yorum" />
+						</f:facet>
+						#{personService.personuAl(shareCommit.person.person_Id).person_Adi} #{personService.personuAl(shareCommit.person.person_Id).person_Soyadi} kişisi şu paylaşımda <h:form> <h:commandLink action="#{mySession.git3(shareCommit.share.share_Id)}" value="#{shareService.getShare(shareCommit.share.share_Id).share_Text}" /> </h:form> şu yorumu yaptı : #{shareCommit.shareCommitText}
+					</p:column>
+					
+				</p:dataTable>
+				<br></br>
+				<br></br>
+				<hr></hr>
+			</c:if>
+			
+			<c:if test="#{notificationService.getSeenShareCR().size() > 0}">
+			Eski Yorumlara verilen cevaplar : 
+				<p:dataTable id="tbl6" var="shareCR"
+					value="#{notificationService.getSeenShareCR()}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" rows="10" style="margin-bottom:20px">
+
+					 <p:column>
+						<f:facet name="header">
+							<h:outputText value="Yorum" />
+						</f:facet>
+						
+						#{personService.personuAl(shareCR.person.person_Id).person_Adi} #{personService.personuAl(shareCR.person.person_Id).person_Soyadi} kişisi şu paylaşımda <h:form><h:commandLink action="#{mySession.git3(shareCR.share.share_Id)}" value="#{shareService.getShare(shareCR.share.share_Id).share_Text}" /></h:form> şu yorumu yaptı : #{shareCR.shareCRText}
+					</p:column>
+					
+				</p:dataTable>
+			</c:if>
+			
+			<c:if test="#{notificationService.getFriendShareSeenCommit().size() > 0}">
+			Başkasına Ait Paylaşım'a Ait Eski Yorumlara Verilen Cevaplar : 
+				<p:dataTable id="tbl8" var="shareCR"
+					value="#{notificationService.getFriendShareSeenCommit()}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" rows="10" style="margin-bottom:20px">
+
+					 <p:column>
+						<f:facet name="header">
+							<h:outputText value="Yorum" />
+						</f:facet>
+						
+						#{personService.personuAl(shareCR.person.person_Id).person_Adi} #{personService.personuAl(shareCR.person.person_Id).person_Soyadi} kişisi şu paylaşımda <h:form><h:commandLink action="#{mySession.git3(shareCR.share.share_Id)}" value="#{shareService.getShare(shareCR.share.share_Id).share_Text}" /></h:form> şu yorumu yaptı : #{shareCR.shareCRText}
+					</p:column>
+					
+				</p:dataTable>
+			</c:if>
+			
+		</div>
+		<div id="alt"></div>
+	</div>
+	#{notificationService.gorulmeDurumuUpdate()}
+</h:body>
+
+</html>
+

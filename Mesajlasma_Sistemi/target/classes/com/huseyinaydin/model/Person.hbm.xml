@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.huseyinaydin.model.Person" table="person"
+		catalog="mesajlasma_sistemi">
+		<cache usage="read-write" />
+		<id name="person_Id" type="java.lang.Long">
+			<column name="person_id" />
+			<generator class="identity" />
+		</id>
+
+		<property name="person_Adi" type="string">
+			<column name="person_adi" length="50" not-null="true" />
+		</property>
+		<property name="person_Soyadi" type="string">
+			<column name="person_soyadi" length="50" not-null="true" />
+		</property>
+		<property name="person_Username" type="string">
+			<column name="person_kadi" length="50" not-null="true" />
+		</property>
+		<property name="person_Password" type="string">
+			<column name="person_pass" length="50" not-null="true" />
+		</property>
+		<property name="person_ProfilePhoto" type="string">
+			<column name="person_profile_photo" length="50"
+				not-null="false" />
+		</property>
+		<property name="person_BannerPhoto" type="string">
+			<column name="person_banner_photo" length="50"
+				not-null="false" />
+		</property>
+		<property name="person_DTar" type="date">
+			<column name="person_dtar" not-null="true" />
+		</property>
+		<set name="messages" table="message" inverse="true" lazy="false"
+			fetch="select">
+			<key>
+				<column name="person_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.Message" />
+		</set>
+		<set name="commits" table="commit" inverse="true" lazy="false"
+			fetch="select">
+			<key>
+				<column name="person_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.Commit" />
+		</set>
+		<set name="friendRequests" table="friend_request" inverse="true"
+			lazy="false" fetch="select">
+			<key>
+				<column name="person_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.FriendRequest" />
+		</set>
+		<set name="shares" table="share" inverse="true" lazy="false"
+			fetch="select">
+			<key>
+				<column name="person_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.Share" />
+		</set>
+
+		<set name="shareCommits" table="share_commits" inverse="true"
+			lazy="false" fetch="select">
+			<key>
+				<column name="person_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.ShareCommit" />
+		</set>
+		<set name="shareCRs" table="share_cr" inverse="true" lazy="false"
+			fetch="select">
+			<key>
+				<column name="person_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.ShareCR" />
+		</set>
+		<set name="likes" table="likex" cascade="all" inverse="true"
+			lazy="false" fetch="select">
+			<key>
+				<column name="person_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.Likex" />
+		</set>
+	</class>
+</hibernate-mapping>

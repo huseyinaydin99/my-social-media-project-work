@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.huseyinaydin.model.Message" table="message"
+		catalog="mesajlasma_sistemi">
+		<cache usage="read-write" />
+		<id name="message_Id" type="java.lang.Long">
+			<column name="message_id" />
+			<generator class="identity" />
+		</id>
+
+		<many-to-one name="person"
+			class="com.huseyinaydin.model.Person" fetch="select">
+			<column name="person_id" not-null="true" />
+		</many-to-one>
+
+		<property name="to" type="java.lang.Long">
+			<column name="too" not-null="true" />
+		</property>
+
+		<property name="listIndex" type="java.lang.Long">
+			<column name="list_index" not-null="true" />
+		</property>
+
+		<property name="gorulmeDurumu" type="yes_no">
+			<column name="gorulme_durumu" not-null="true" />
+		</property>
+
+		<property name="message_Body" type="string">
+			<column name="message_body" length="50" not-null="true" />
+		</property>
+
+		<property name="message_Photo" type="string">
+			<column name="message_photo" length="50" not-null="false" />
+		</property>
+		
+		<property name="messageKayitTarihi" type="date">
+			<column name="message_kayit_tarihi" not-null="true" />
+		</property>
+		
+		<property name="messageKayitSaati" type="time">
+			<column name="message_kayit_saati" not-null="true" />
+		</property>
+
+		<set name="commits" table="commit" cascade="all" inverse="true"
+			lazy="false" fetch="select">
+			<key>
+				<column name="message_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.Commit" />
+		</set>
+
+	</class>
+</hibernate-mapping>

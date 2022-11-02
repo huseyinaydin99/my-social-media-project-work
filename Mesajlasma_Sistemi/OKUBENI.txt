@@ -1,0 +1,22 @@
+Spring'i web.xml'e tanıttık.
+
+Spring'i faces-config.xml'e tanıttık.
+
+Bu proje de kullanılan teknolojiler : 
+
+Maven
+Java
+Spring Framework
+Java Server Faces
+Prime Faces
+Hibernate/JPA
+Mysql
+OpenCV
+xhtml
+css
+
+Veritabanı : Mysql
+
+Bu proje de kullanılacak teknolojiler : 
+
+Ajax

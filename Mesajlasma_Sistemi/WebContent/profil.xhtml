@@ -1,0 +1,590 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Profilim</title>
+	<style type="text/css">
+@charset "iso-8859-9";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#anadiv {
+	height: 100%;
+	width: 100%;
+}
+
+#icanadiv {
+	height: 1024px;
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#baslik {
+	float: left;
+	height: 50px;
+	width: 100%;
+	background-color: #185886;
+}
+
+#icbaslik {
+	height: 50px;
+	width: 1074px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#logo {
+	float: left;
+	height: 50px;
+	width: 100px;
+}
+
+#arama {
+	float: left;
+	height: 50px;
+	width: 424px;
+}
+
+#orta {
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+	min-height: 100%;
+	height: 60vh;
+}
+
+#ortaaa {
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+	min-height: 100%;
+	height: auto;
+}
+
+#paylasim_baslik {
+	float: left;
+	height: 150px;
+	width: 600px;
+}
+
+#paylasim_orta {
+	float: left;
+	height: 450px;
+	width: 600px;
+}
+
+#paylasim_profil_resmi {
+	float: left;
+	height: 150px;
+	width: 150px;
+	margin-right: 5px;
+}
+
+#paylasim_isimsoyisim {
+	float: left;
+	height: 150px;
+	width: 250px;
+}
+
+#paylasim_sil_duzenle {
+	float: left;
+	height: 150px;
+	width: 190px;
+	margin-left: 5px;
+}
+
+#paylasim_yazisi {
+	float: left;
+	height: auto;
+	width: 600px;
+	margin-bottom: 5px;
+}
+
+#paylasim_resmi {
+	float: left;
+	height: auto;
+	width: 600px;
+}
+
+#ic {
+	height: 100px;
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+	float: left;
+}
+
+#kapak_fotografi {
+	float: left;
+	height: 300px;
+	width: 724px;
+}
+
+#kapak_fotografi_degistir {
+	float: left;
+	height: 50px;
+	width: 724px;
+}
+
+#profil_etiketi {
+	float: left;
+	height: 30px;
+	width: 724px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bolder;
+	color: #000;
+}
+
+#profil_resmi_degistir {
+	height: 50px;
+	width: 300px;
+	float: left;
+}
+
+#profil_resmi {
+	float: left;
+	height: 300px;
+	width: 300px;
+}
+
+#alt {
+	float: left;
+	height: 6vh;
+	width: 100%;
+	background-color: #185886;
+}
+
+#arkadaslik_istekleri {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/friend_requesting.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#mektup {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/message.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#isim {
+	float: left;
+	height: 50px;
+	width: 132px;
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+}
+
+#anadiv #baslik #icbaslik #isim .link {
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+	font-weight: normal;
+}
+
+#notification {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/notification.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#cikis {
+	float: left;
+	height: 50px;
+	width: 200px;
+}
+
+#anadiv #baslik #icbaslik #arama #icarama {
+	height: 50px;
+	width: 400px;
+	margin-left: 11px;
+	margin-top: 6px;
+}
+
+.iSayi {
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	color: #F00;
+	text-decoration: none;
+	float: left;
+	height: 20px;
+	width: 50px;
+	margin-top: 16px;
+	text-align: right;
+}
+
+a {
+	color: #F00;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:active {
+	text-decoration: none;
+	color: #F00;
+}
+</style>
+</h:head>
+<h:body>
+	<h:form enctype="multipart/form-data">
+		<p:growl id="messages" showDetail="true" />
+		<div id="anadiv">
+			<div id="baslik">
+				<div id="icbaslik">
+					<div id="logo">
+						<h:commandLink action="anasayfa">
+							<h:graphicImage value="/resources/images/logo.png" />
+						</h:commandLink>
+					</div>
+					<div id="arama">
+						<div id="icarama">
+							<table>
+								<tr>
+									<td><p:keyboard size="30" style="font-size:13pt"
+											value="#{searchModel.word}" /></td>
+									<td><h:commandButton
+											action="#{searchResources.initPersons(searchModel)}"
+											image="/resources/images/person_search.png" /></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div id="isim">
+						<a class="link" href="profilim.jsf">#{mySession.person.person_Adi}
+							#{mySession.person.person_Soyadi}</a>
+					</div>
+					<div id="arkadaslik_istekleri">
+						<div class="iSayi">
+							<h:commandLink action="arkadaslikistekleri?faces-redirect=true"
+								value="#{friendService.getMyFriendRequestCount(mySession.getPerson().person_Id)}" />
+						</div>
+					</div>
+					<div id="mektup">
+						<div class="iSayi">
+							<h:commandLink action="gelenvegidenkutusu?faces-redirect=true"
+								value="#{messageService.mesajlarToplaminiAl()}" />
+						</div>
+					</div>
+					<div id="notification">
+						<div class="iSayi">
+							<h:commandLink action="bildirimler?faces-redirect=true"
+								value="#{notificationService.getNotificationCount()}" />
+						</div>
+					</div>
+					<div id="cikis">
+						<h:commandButton action="#{mySession.destroy()}"
+							image="/resources/images/exit.png" />
+					</div>
+				</div>
+			</div>
+			<div id="orta">
+				<div id="ic">
+					<div id="profil_resmi">
+						<h:graphicImage height="300px"
+							value="#{personResources.persons.get(0).profilFotosunuVer()}" />
+						<!-- <div id="profil_resmi_degistir">
+							profil resmi değiştir
+						</div> -->
+
+					</div>
+					<div id="kapak_fotografi">
+
+						<h:graphicImage height="300px"
+							value="#{personResources.persons.get(0).bannerFotosunuVer()}" />
+						<div id="profil_etiketi">
+							<table>
+								<tr>
+									<td>#{personResources.persons.get(0).person_Adi}
+										#{personResources.persons.get(0).person_Soyadi}&nbsp;</td>
+									<td>#{personResources.initPersons()} <c:if
+											test="#{not empty personResources.persons}">
+											<p:dataList value="#{personResources.persons}" var="person"
+												type="definition">
+												<h:panelGrid columns="1">
+													<h:commandButton
+														action="#{mySession.git2(person.person_Id)}"
+														image="/resources/images/send_message.png" />
+												</h:panelGrid>
+											</p:dataList>
+										</c:if> <c:if test="#{empty personResources.persons}">
+						Bu kişi zaten sizsiniz
+						</c:if>
+									</td>
+									<td><c:if
+											test="#{friendService.isFriend(personResources.persons.get(0).person_Id) == 0}">
+											<h:commandButton
+												action="#{friendService.sendFriendRequest(personResources.persons.get(0).person_Id)}"
+												image="/resources/images/friend_request.png" />
+										</c:if> <c:if
+											test="#{friendService.isFriend(personResources.persons.get(0).person_Id) == 1}">
+											<h:graphicImage
+												value="/resources/images/friend_request_ok.png" />
+										</c:if> <c:if
+											test="#{friendService.isFriend(personResources.persons.get(0).person_Id) == 2}">
+											<h:graphicImage
+												value="/resources/images/friend_request_okk.png" />
+										</c:if> <c:if
+											test="#{friendService.isFriend(personResources.persons.get(0).person_Id) == 3}">
+											<h:graphicImage
+												value="/resources/images/friend_request_ookk.png" />
+										</c:if></td>
+								</tr>
+							</table>
+						</div>
+
+						<div id="kapak_fotografi_degistir"></div>
+
+					</div>
+				</div>
+			</div>
+			<div id="ortaaa">
+				<!-- BURASI -->
+					<c:forEach var="share" items="#{shareService.getProfileShare()}">
+						<div id="paylasimlar">
+							<div id="paylasim">
+								<div id="paylasim_baslik">
+									<div id="paylasim_profil_resmi">
+										<br />&nbsp;&nbsp;
+										<h:graphicImage height="120px"
+											value="#{personService.personuAl(share.person.person_Id).profilFotosunuVer()}" />
+									</div>
+									<div id="paylasim_isimsoyisim">
+										<br />&nbsp;&nbsp;&nbsp;#{personService.personuAl(share.person.person_Id).person_Adi}
+										#{personService.personuAl(share.person.person_Id).person_Soyadi}
+									</div>
+									<div id="paylasim_sil_duzenle"></div>
+								</div>
+								<div id="paylasim_orta">
+									<div id="paylasim_yazisi">
+										<br />&nbsp;&nbsp;&nbsp;#{share.share_Text}
+									</div>
+									<div id="paylasim_resmi">
+										<center>
+												<p:galleria value="#{share.images}" var="shareImage"
+													panelWidth="500" panelHeight="350" showCaption="false">
+													<h:graphicImage width="450"
+														value="/resources/images/#{shareImage.image}" />
+												</p:galleria>
+										</center>
+
+
+									</div>
+
+
+								</div>
+							</div>
+							<div id="paylasim_islem">
+								<br></br>
+								<div id="paylasim_begen">
+
+									<table>
+										<tr>
+											<td><h:form>
+													<h:commandButton action="#{likeService.saveLike(share)}"
+														image="/resources/images/save_like.png" />
+												</h:form> Beğenenler<br /> <c:forEach id="repeat1" var="likex" items="#{likeService.getShareLikes(share)}">
+														#{personService.personuAl(likex.person.person_Id).person_Adi}&nbsp;
+														#{personService.personuAl(likex.person.person_Id).person_Soyadi},
+													</c:forEach></td>
+											<h:form>
+											<td>
+													<table>
+														<tr>
+															<td>Yorum Yap :</td>
+															<td><p:keyboard id="#{share.idVer()}" size="20"
+																	style="font-size:12pt"
+																	value="#{shareCommit.shareCommitText}" /></td>
+															<td><h:commandButton
+																	action="#{shareCommitService.saveShareCommit(shareCommit,share)}"
+																	image="/resources/images/send_commit.png" /></td>
+														</tr>
+													</table>
+											</td>
+											</h:form>
+										</tr>
+									</table>
+
+								</div>
+								<div id="paylasim_logo">
+										<b> Yorumlar </b>
+										<hr/><br/>
+										<table>
+										<c:forEach var="shareCommitx" items="#{share.getShareCommitsList()}">
+												<h:form>
+													<tr>
+														<td><h:graphicImage height="80px"
+																value="#{personService.personuAl(shareCommitx.person.person_Id).profilFotosunuVer()}" />
+														</td>
+														<td>&nbsp;
+															#{personService.personuAl(shareCommitx.person.person_Id).person_Adi}
+															#{personService.personuAl(shareCommitx.person.person_Id).person_Soyadi}
+														</td>
+														<td>&nbsp; <h:outputText
+																value="#{shareCommitx.shareCommitText}"
+																rendered="#{not shareCommitx.duzenleDurum}" />
+															#{shareCommitTextTutucu.setText(shareCommitx.shareCommitText)}
+															<h:inputText value="#{shareCommitTextTutucu.text}"
+																rendered="#{shareCommitx.duzenleDurum}" />
+														</td>
+														<td><c:if
+																test="#{shareCommitx.person.person_Id == mySession.person.person_Id}">
+																<table>
+																	<tr>
+																		<td><h:commandButton
+																				action="#{shareCommitService.deleteShareCommit(shareCommitx)}"
+																				image="/resources/images/delete.png" />
+																		</td>
+																		<td><h:commandButton
+																				rendered="#{not shareCommitx.duzenleDurum}"
+																				action="#{shareCommitService.updateShareCommitDuzenleDurum(true,shareCommitx)}"
+																				image="/resources/images/edit.png" />
+																		</td>
+																		<td><h:commandButton
+																				rendered="#{shareCommitx.duzenleDurum}"
+																				action="#{shareCommitService.updateShareCommitDuzenleDurum(false,shareCommitx,shareCommitTextTutucu.text)}"
+																				image="/resources/images/save.png" />
+																		</td>
+																	</tr>
+																</table>
+															</c:if></td>
+													</tr>
+												</h:form>
+												<h:form>
+												<tr>
+													<td colspan="3">
+													
+															<table>
+															
+																<tr>
+																	<td>Yorum'a cevap ver :</td>
+																	<td><p:keyboard
+																			size="20" style="font-size:12pt"
+																			value="#{shareCR.shareCRText}" />
+																		
+																			</td>
+																	<td><h:commandButton
+																			action="#{shareCRService.saveShareCR(shareCR,share,shareCommitx,shareCR.shareCRText)}"
+																			image="/resources/images/send_commit_cr.png" />
+																	</td>
+																</tr>
+																
+															</table>
+															
+													</td>
+													
+												</tr>
+												</h:form>
+												<tr>
+													<td colspan="4">
+
+														<table>
+															
+																<tr>
+																	<td><b>Yoruma verilen cevaplar :</b></td>
+																	<td></td>
+																	<td></td>
+																</tr>
+															
+															<h:form>
+															<c:forEach var="shareCR" items="#{shareCRService.getShareCR(share,shareCommitx)}">
+																
+																	<tr>
+																		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:graphicImage
+																				height="80px"
+																				value="#{personService.personuAl(shareCR.person.person_Id).profilFotosunuVer()}" />
+																		</td>
+																		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																			#{personService.personuAl(shareCR.person.person_Id).person_Adi}
+																			#{personService.personuAl(shareCR.person.person_Id).person_Soyadi}
+																		</td>
+																		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+																			<h:outputText value="#{shareCR.shareCRText}"
+																				rendered="#{not shareCR.duzenleDurum}" />
+																			#{shareCRTextTutucu.setText(shareCR.shareCRText)} <h:inputText
+																				value="#{shareCRTextTutucu.text}"
+																				rendered="#{shareCR.duzenleDurum}" /> &nbsp;
+																		</td>
+																		<td><c:if
+																				test="#{shareCR.person.person_Id == mySession.person.person_Id}">
+																				<table>
+																					<tr>
+																						<td><h:commandButton
+																								action="#{shareCRService.deleteShareCR(shareCR)}"
+																								image="/resources/images/delete.png" /></td>
+																						<td><h:commandButton
+																								rendered="#{not shareCR.duzenleDurum}"
+																								action="#{shareCRService.updateShareCRDuzenleDurum(true,shareCR)}"
+																								image="/resources/images/edit.png" /></td>
+																						<td><h:commandButton
+																								rendered="#{shareCR.duzenleDurum}"
+																								action="#{shareCRService.updateShareCRDuzenleDurum(false,shareCR,shareCRTextTutucu.text)}"
+																								image="/resources/images/save.png" /></td>
+																					</tr>
+																				</table>
+																			</c:if></td>
+																	</tr>
+																</c:forEach>
+															</h:form>
+														</table>
+													</td>
+												</tr>
+											</c:forEach>
+
+										</table>
+									
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+			</div>
+			
+		</div>
+	</h:form>
+</h:body>
+
+</html>
+

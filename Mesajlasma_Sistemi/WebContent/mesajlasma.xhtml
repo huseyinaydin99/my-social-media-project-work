@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<style type="text/css">
+@charset "iso-8859-9";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#anadiv {
+	height: 100%;
+	width: 100%;
+}
+
+#icanadiv {
+	height: 1024px;
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#baslik {
+	float: left;
+	height: 50px;
+	width: 100%;
+	background-color: #185886;
+}
+
+#icbaslik {
+	height: 50px;
+	width: 1074px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#logo {
+	float: left;
+	height: 50px;
+	width: 100px;
+}
+
+#arama {
+	float: left;
+	height: 50px;
+	width: 424px;
+}
+
+#orta {
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+	min-height: 100%;
+	height: 97vh;
+}
+
+#alt {
+	float: left;
+	height: 6vh;
+	width: 100%;
+	background-color: #185886;
+}
+
+#arkadaslik_istekleri {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/friend_requesting.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#mektup {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/message.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#isim {
+	float: left;
+	height: 50px;
+	width: 132px;
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+}
+
+#notification {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/notification.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#cikis {
+	float: left;
+	height: 50px;
+	width: 200px;
+}
+
+#anadiv #baslik #icbaslik #isim .link {
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+	font-weight: normal;
+}
+
+#anadiv #baslik #icbaslik #arama #icarama {
+	height: 50px;
+	width: 400px;
+	margin-left: 11px;
+	margin-top: 6px;
+}
+
+.iSayi {
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	color: #F00;
+	text-decoration: none;
+	float: left;
+	height: 20px;
+	width: 50px;
+	margin-top: 16px;
+	text-align: right;
+}
+
+a {
+	color: #F00;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:active {
+	text-decoration: none;
+	color: #F00;
+}
+</style>
+</h:head>
+<body>
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+	</h:form>
+	<div id="anadiv">
+		<div id="baslik">
+			<div id="icbaslik">
+				<div id="logo">
+					<h:form>
+						<h:commandLink action="anasayfa">
+							<h:graphicImage value="/resources/images/logo.png" />
+						</h:commandLink>
+					</h:form>
+				</div>
+				<div id="arama">
+					<div id="icarama">
+						<h:form>
+							<table>
+								<tr>
+									<td><p:keyboard size="30" style="font-size:13pt"
+											value="#{searchModel.word}" /></td>
+									<td><h:commandButton
+											action="#{searchResources.initPersons(searchModel)}"
+											image="/resources/images/person_search.png" /></td>
+								</tr>
+							</table>
+						</h:form>
+					</div>
+				</div>
+				<h:form>
+					<div id="isim">
+						<a class="link" href="profilim.jsf">#{mySession.person.person_Adi}
+							#{mySession.person.person_Soyadi}</a>
+					</div>
+					<div id="arkadaslik_istekleri">
+						<div class="iSayi">
+							<h:commandLink action="arkadaslikistekleri?faces-redirect=true"
+								value="#{friendService.getMyFriendRequestCount(mySession.getPerson().person_Id)}" />
+						</div>
+					</div>
+					<div id="mektup">
+						<div class="iSayi">
+							<h:commandLink action="gelenvegidenkutusu?faces-redirect=true"
+								value="#{messageService.mesajlarToplaminiAl()}" />
+						</div>
+					</div>
+					<div id="notification">
+						<div class="iSayi">
+							<h:commandLink action="bildirimler?faces-redirect=true"
+								value="#{notificationService.getNotificationCount()}" />
+						</div>
+					</div>
+					<div id="cikis">
+						<h:commandButton action="#{mySession.destroy()}"
+							image="/resources/images/exit.png" />
+					</div>
+				</h:form>
+			</div>
+		</div>
+		<div id="orta">
+			<h:form>
+				<div style="width: 1024px; height: 500px; overflow-y: scroll;">
+					İlk Mesaj<br />
+
+					<p:dataTable id="tbl" var="message"
+						value="#{messageService.mesajlariVeIcerikleriAl()}"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+						paginator="true" rows="6" style="margin-bottom:20px">
+
+						<!-- <p:column>
+							<f:facet name="header">
+								<h:outputText value="Mesaj ID" />
+							</f:facet>
+							<h:outputText value="#{message.message_Id}" />
+						</p:column> -->
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Gönderen Profil Resmi" />
+							</f:facet>
+							<h:graphicImage width="120px"
+								value="#{personService.personuAl(message.person.person_Id).profilFotosunuVer()}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Alıcı Profil Resmi" />
+							</f:facet>
+							<h:graphicImage width="120px"
+								value="#{personService.personuAl(message.to).profilFotosunuVer()}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Kimden" />
+							</f:facet>
+							<h:outputText
+								value="#{personService.personuAl(message.person.person_Id).person_Adi} #{personService.personuAl(message.person.person_Id).person_Soyadi}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Kime" />
+							</f:facet>
+							<h:outputText
+								value="#{personService.personuAl(message.to).person_Adi} #{personService.personuAl(message.to).person_Soyadi}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Mesaj İçeriği Resmi" />
+							</f:facet>
+							<h:graphicImage width="120px"
+								value="/resources/images/#{message.message_Photo}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Mesaj" />
+							</f:facet>
+							<h:outputText value="#{message.message_Body}" />
+						</p:column>
+						
+						<p:column>
+								<f:facet name="header">
+									<h:outputText value="Silme" />
+								</f:facet>
+								<h:commandButton action="#{messageService.deleteMessage(message)}"
+									image="/resources/images/delete.png" />
+						</p:column>
+					</p:dataTable>
+					<br /> İlk Mesaja Verilen Cevaplar
+					<c:if test="#{not empty messageService.mesajlariVeIcerikleriAl()}">
+						<p:dataTable id="tbl2" var="commit"
+							value="#{messageService.mesajlariVeIcerikleriAl().get(0).commits}"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+							sortMode="multiple" paginator="true" rows="10"
+							style="margin-bottom:20px">
+
+							<f:facet name="{Exporters}">
+								<h:commandLink>
+									<p:graphicImage name="/demo/images/excel.png" width="24" />
+									<p:dataExporter type="xls" target="tbl" fileName="cars" />
+								</h:commandLink>
+
+								<h:commandLink>
+									<p:graphicImage name="/demo/images/pdf.png" width="24" />
+									<p:dataExporter type="pdf" target="tbl" fileName="cars" />
+								</h:commandLink>
+
+								<h:commandLink>
+									<p:graphicImage name="/demo/images/csv.png" width="24" />
+									<p:dataExporter type="csv" target="tbl" fileName="cars" />
+								</h:commandLink>
+
+								<h:commandLink>
+									<p:graphicImage name="/demo/images/xml.png" width="24" />
+									<p:dataExporter type="xml" target="tbl" fileName="cars" />
+								</h:commandLink>
+							</f:facet>
+
+							<!-- <p:column>
+								<f:facet name="header">
+									<h:outputText value="Commit ID" />
+								</f:facet>
+								<h:outputText value="#{commit.commit_Id}" />
+							</p:column> -->
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Gönderen Profil Resmi" />
+								</f:facet>
+								<h:graphicImage width="120px"
+									value="#{personService.personuAl(commit.person.person_Id).profilFotosunuVer()}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Alıcı Profil Resmi" />
+								</f:facet>
+								<h:graphicImage width="120px"
+									value="#{personService.personuAl(commit.to).profilFotosunuVer()}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Kimden" />
+								</f:facet>
+								<h:outputText
+									value="#{commit.person.person_Adi} #{commit.person.person_Soyadi}" />
+
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Kime" />
+								</f:facet>
+								<h:outputText
+									value="#{personService.personuAl(commit.to).person_Adi} #{personService.personuAl(commit.to).person_Soyadi}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Mesaj İçeriği Resmi" />
+								</f:facet>
+								<h:graphicImage width="120px"
+									value="/resources/images/#{commit.commit_Photo}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Mesaj" />
+								</f:facet>
+								<h:outputText value="#{commit.commit_Body}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Silme" />
+								</f:facet>
+								<h:commandButton action="#{commitService.deleteCommit(commit)}"
+									image="/resources/images/delete.png" />
+							</p:column>
+
+						</p:dataTable>
+					</c:if>
+					<br />
+
+				</div>
+			</h:form>
+			<br />
+			<div>Mesaj gönderilecek kişi :
+				#{personService.personuAl(mySession.kim).person_Adi}
+				#{personService.personuAl(mySession.kim).person_Soyadi}</div>
+			<br />
+			<h:form enctype="multipart/form-data">
+				<table style="height: 100%;">
+					<tr>
+						<td><h:inputFile value="#{fileUpload2.uFile}" /></td>
+					</tr>
+					<tr>
+						<td><font color="red">#{message.islemDurumu}</font></td>
+					</tr>
+					<tr>
+						<td><p:editor id="editor" widgetVar="editorWidget"
+								value="#{message.message_Body}" width="600" /></td>
+					</tr>
+					<tr>
+						<td><h:commandButton
+								action="#{messageService.sendMessage(message,fileUpload2.uFile,fileUpload2.getFileName(fileUpload2.uFile))}"
+								image="/resources/images/sending_message.png" />#{messageService.updateMessageAndCommitGorulmeDurumu(message)}</td>
+					</tr>
+				</table>
+			</h:form>
+		</div>
+
+	</div>
+</body>
+</html>

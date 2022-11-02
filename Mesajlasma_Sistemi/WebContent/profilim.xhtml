@@ -1,0 +1,733 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title>Profilim</title>
+	<style type="text/css">
+@charset "iso-8859-9";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#anadiv {
+	height: 100%;
+	width: 100%;
+}
+
+#icanadiv {
+	height: 1024px;
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#baslik {
+	float: left;
+	height: 50px;
+	width: 100%;
+	background-color: #185886;
+}
+
+#icbaslik {
+	height: 50px;
+	width: 1074px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#logo {
+	float: left;
+	height: 50px;
+	width: 100px;
+}
+
+#arama {
+	float: left;
+	height: 50px;
+	width: 424px;
+}
+
+#orta {
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+	min-height: 100%;
+	height: 100%;
+}
+
+#paylasim_baslik {
+	float: left;
+	height: 150px;
+	width: 600px;
+}
+
+#paylasim_orta {
+	float: left;
+	height: 450px;
+	width: 600px;
+}
+
+#paylasim_profil_resmi {
+	float: left;
+	height: 150px;
+	width: 150px;
+	margin-right: 5px;
+}
+
+#paylasim_isimsoyisim {
+	float: left;
+	height: 150px;
+	width: 250px;
+}
+
+#paylasim_sil_duzenle {
+	float: left;
+	height: 150px;
+	width: 190px;
+	margin-left: 5px;
+}
+
+#paylasim_yazisi {
+	float: left;
+	height: auto;
+	width: 600px;
+	margin-bottom: 5px;
+}
+
+#paylasim_resmi {
+	float: left;
+	height: auto;
+	width: 600px;
+}
+
+#ic {
+	height: 100px;
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+	float: left;
+}
+
+#kapak_fotografi {
+	float: left;
+	height: 300px;
+	width: 724px;
+}
+
+#kapak_fotografi_degistir {
+	float: left;
+	height: 50px;
+	width: auto;
+}
+
+#profil_etiketi {
+	float: left;
+	height: 30px;
+	width: auto;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bolder;
+	color: #000;
+}
+
+#profil_resmi_degistir {
+	height: 50px;
+	width: 300px;
+	float: left;
+}
+
+#profil_resmi {
+	float: left;
+	height: 300px;
+	width: 300px;
+}
+
+#alt {
+	float: left;
+	height: 6vh;
+	width: 100%;
+	background-color: #185886;
+}
+
+#arkadaslik_istekleri {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/friend_requesting.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#mektup {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/message.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#isim {
+	float: left;
+	height: 50px;
+	width: 132px;
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+}
+
+#notification {
+	float: left;
+	height: 50px;
+	width: 50px;
+	background-image: url(resources/images/notification.png);
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#anadiv #baslik #icbaslik #isim .link {
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+	font-weight: normal;
+}
+
+#cikis {
+	float: left;
+	height: 50px;
+	width: 200px;
+}
+
+#anadiv #baslik #icbaslik #arama #icarama {
+	height: 50px;
+	width: 400px;
+	margin-left: 11px;
+	margin-top: 6px;
+}
+
+.iSayi {
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	color: #F00;
+	text-decoration: none;
+	float: left;
+	height: 20px;
+	width: 50px;
+	margin-top: 16px;
+	text-align: right;
+}
+
+a {
+	color: #F00;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #F00;
+}
+
+a:active {
+	text-decoration: none;
+	color: #F00;
+}
+
+#sol {
+	float: left;
+	height: 800px;
+	width: 300px;
+}
+
+#sag {
+	float: left;
+	height: auto;
+	width: 724px;
+}
+
+#paylasim_yap {
+	float: left;
+	height: 350px;
+	width: 724px;
+	margin-top: 50px;
+}
+
+#paylasimlar {
+	float: left;
+	height: auto;
+	width: 724px;
+}
+
+#paylasim {
+	height: 650px;
+	width: 600px;
+	margin-right: auto;
+	margin-top: 7px;
+	margin-bottom: 7px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12pt;
+	color: #000;
+	text-decoration: none;
+	font-weight: normal;
+	background-color: #FFF;
+}
+
+#paylasim_islem {
+	float: left;
+	height: auto;
+	width: 600px;
+	background-color: #FFF;
+}
+
+#paylasim_begen {
+	float: left;
+	height: 80px;
+	width: 600px;
+}
+
+#paylasim_logo {
+	float: left;
+	height: auto;
+	width: 600px;
+	margin-top: 5px;
+}
+
+#paylasim_yorum {
+	float: left;
+	height: 200px;
+	width: 600px;
+}
+
+#fotograflar {
+	float: left;
+	height: 300px;
+	width: 300px;
+	margin-top: 50px;
+}
+
+#arkadaslar {
+	float: left;
+	height: 300px;
+	width: 300px;
+}
+
+#foto_baslik {
+	float: left;
+	height: 30px;
+	width: 300px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14pt;
+	line-height: 28px;
+}
+
+#arkadaslar_baslik {
+	float: left;
+	height: 30px;
+	width: 300px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14pt;
+	line-height: 28px;
+}
+
+#foto {
+	height: 270px;
+	width: 300px;
+	float: left;
+}
+
+#arkadas {
+	float: left;
+	height: 270px;
+	width: 300px;
+}
+
+body {
+	background-color: #EBEBEB;
+}
+</style>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+	</h:form>
+	<div id="anadiv">
+		<div id="baslik">
+			<div id="icbaslik">
+				<div id="logo">
+					<h:form>
+						<h:commandLink action="anasayfa">
+							<h:graphicImage value="/resources/images/logo.png" />
+						</h:commandLink>
+					</h:form>
+				</div>
+				<div id="arama">
+					<h:form>
+						<div id="icarama">
+							<table>
+								<tr>
+									<td><p:keyboard size="30" style="font-size:13pt"
+											value="#{searchModel.word}" /></td>
+									<td><h:commandButton
+											action="#{searchResources.initPersons(searchModel)}"
+											image="/resources/images/person_search.png" /></td>
+								</tr>
+							</table>
+						</div>
+					</h:form>
+				</div>
+				<h:form>
+					<div id="isim">
+						<a class="link" href="profilim.jsf">#{mySession.person.person_Adi}
+							#{mySession.person.person_Soyadi}</a>
+					</div>
+					<div id="arkadaslik_istekleri">
+						<div class="iSayi">
+							<h:commandLink action="arkadaslikistekleri?faces-redirect=true"
+								value="#{friendService.getMyFriendRequestCount(mySession.getPerson().person_Id)}" />
+						</div>
+					</div>
+					<div id="mektup">
+						<div class="iSayi">
+							<h:commandLink action="gelenvegidenkutusu?faces-redirect=true"
+								value="#{messageService.mesajlarToplaminiAl()}" />
+						</div>
+					</div>
+					<div id="notification">
+						<div class="iSayi">
+							<h:commandLink action="bildirimler?faces-redirect=true"
+								value="#{notificationService.getNotificationCount()}" />
+						</div>
+					</div>
+					<div id="cikis">
+						<h:commandButton action="#{mySession.destroy()}"
+							image="/resources/images/exit.png" />
+					</div>
+				</h:form>
+			</div>
+		</div>
+		<div id="orta">
+			<div id="ic">
+				<div id="profil_resmi">
+					<h:form enctype="multipart/form-data">
+						<h:graphicImage height="300px"
+							value="#{profileService.getProfilePhoto()}" />
+						<div id="profil_resmi_degistir">
+							<table>
+								<tr>
+									<td><p:fileUpload label="Profil Fotoğrafı Seç"
+											value="#{fileUpload.uploadedFile}"
+											allowTypes="/(\.|\/)(jpeg|png)$/" mode="simple"
+											skinSimple="true" /></td>
+									<td><p:commandButton value="Yükle" ajax="false"
+											actionListener="#{fileUpload.upload()}" /></td>
+								</tr>
+							</table>
+						</div>
+					</h:form>
+				</div>
+				<div id="kapak_fotografi">
+					<center>
+						<h:graphicImage height="300px"
+							value="#{profileService.getBannerPhoto()}" />
+					</center>
+					<h:form enctype="multipart/form-data">
+						<table>
+							<tr>
+								<td><div id="profil_etiketi">#{mySession.person.person_Adi}
+										#{mySession.person.person_Soyadi}&nbsp;&nbsp;</div></td>
+								<div id="kapak_fotografi_degistir">
+									<center>
+										<td><p:fileUpload label="Kapak fotoğrafı Seç"
+												value="#{fileUpload.uploadedFile2}"
+												allowTypes="/(\.|\/)(jpeg|png)$/" mode="simple"
+												skinSimple="true" /></td>
+										<td><p:commandButton value="Yükle" ajax="false"
+												actionListener="#{fileUpload.upload2()}" /></td>
+									</center>
+								</div>
+							</tr>
+						</table>
+					</h:form>
+				</div>
+				<div id="sol">
+					<div id="fotograflar">
+						<div id="foto_baslik">&nbsp;Fotoğraflar</div>
+						<div id="foto">
+							<c:if test="#{shareService.getShareImageList().size() > 0}">
+								<p:galleria value="#{shareService.getShareImageList()}"
+									var="shareImage" panelWidth="296" panelHeight="200"
+									showCaption="false">
+									<h:graphicImage width="220"
+										value="/resources/images/#{shareImage.image}" />
+								</p:galleria>
+							</c:if>
+						</div>
+					</div>
+					<div id="arkadaslar">
+						<div id="arkadaslar_baslik">&nbsp;Arkadaşlar</div>
+						<div id="arkadas">
+							<h:form>
+								<p:dataList value="#{friendService.getMyFriends()}" var="person">
+									<f:facet name="header">
+            					Arkadaşlar
+        						</f:facet>
+									<h:graphicImage width="120"
+										value="#{personService.personuAl(person.person_Id).profilFotosunuVer()}" />
+									<h:commandLink action="#{mySession.git(person.person_Id)}">
+        							#{personService.personuAl(person.person_Id).person_Adi} #{personService.personuAl(person.person_Id).person_Soyadi}
+        						</h:commandLink>
+								</p:dataList>
+							</h:form>
+						</div>
+					</div>
+				</div>
+				<div id="sag">
+					<div id="paylasim_yap">
+						<h:form enctype="multipart/form-data">
+							<table>
+								<tr>
+									<td>Ne Düşünüyorsun?</td>
+								</tr>
+								<tr>
+									<td><h:inputFile value="#{fileUpload3.uFile}"
+											a:multiple="true" /></td>
+								</tr>
+								<tr>
+									<td><p:editor id="editor" widgetVar="editorWidget"
+											value="#{share.share_Text}" width="592" /></td>
+								</tr>
+								<tr>
+									<td><h:commandButton
+											action="#{shareService.saveShare(share.share_Text,fileUpload3.uFile)}"
+											image="/resources/images/sending_share.png" /></td>
+								</tr>
+							</table>
+						</h:form>
+					</div>
+
+
+					<!-- BURASI -->
+					<p:dataScroller chunkSize="1" var="share" value="#{shareService.getMyShare()}">
+						<div id="paylasimlar">
+							<div id="paylasim">
+								<div id="paylasim_baslik">
+									<div id="paylasim_profil_resmi">
+										<br />&nbsp;&nbsp;
+										<h:graphicImage height="120px"
+											value="#{personService.personuAl(share.person.person_Id).profilFotosunuVer()}" />
+									</div>
+									<div id="paylasim_isimsoyisim">
+										<br />&nbsp;&nbsp;&nbsp;#{personService.personuAl(share.person.person_Id).person_Adi}
+										#{personService.personuAl(share.person.person_Id).person_Soyadi}
+									</div>
+									<div id="paylasim_sil_duzenle"></div>
+								</div>
+								<div id="paylasim_orta">
+									<div id="paylasim_yazisi">
+										<br />&nbsp;&nbsp;&nbsp;#{share.share_Text}
+									</div>
+									<div id="paylasim_resmi">
+										<center>
+												<p:galleria value="#{share.images}" var="shareImage"
+													panelWidth="500" panelHeight="350" showCaption="false">
+													<h:graphicImage width="450"
+														value="/resources/images/#{shareImage.image}" />
+												</p:galleria>
+										</center>
+
+
+									</div>
+
+
+								</div>
+							</div>
+							<div id="paylasim_islem">
+								<br></br>
+								<div id="paylasim_begen">
+
+									<table>
+										<tr>
+											<td><h:form>
+													<h:commandButton action="#{likeService.saveLike(share)}"
+														image="/resources/images/save_like.png" />
+												</h:form> Beğenenler<br /> <ui:repeat id="repeat1" var="likex" value="#{likeService.getShareLikes(share)}">
+														#{personService.personuAl(likex.person.person_Id).person_Adi}&nbsp;
+														#{personService.personuAl(likex.person.person_Id).person_Soyadi},
+													</ui:repeat></td>
+											<td><h:form>
+													<table>
+														<tr>
+															<td>Yorum Yap :</td>
+															<td><p:keyboard id="#{share.idVer()}" size="20"
+																	style="font-size:12pt"
+																	value="#{shareCommit.shareCommitText}" /></td>
+															<td><h:commandButton
+																	action="#{shareCommitService.saveShareCommit(shareCommit,share)}"
+																	image="/resources/images/send_commit.png" /></td>
+														</tr>
+													</table>
+												</h:form></td>
+										</tr>
+									</table>
+
+								</div>
+								<div id="paylasim_logo">
+										<b> Yorumlar </b>
+										<hr/><br/>
+										<table>
+											<ui:repeat var="shareCommitx" value="#{share.getShareCommitsList()}">
+											
+												<h:form id="forms">
+													<tr>
+														<td><h:graphicImage height="80px"
+																value="#{personService.personuAl(shareCommitx.person.person_Id).profilFotosunuVer()}" />
+														</td>
+														<td>&nbsp;
+															#{personService.personuAl(shareCommitx.person.person_Id).person_Adi}
+															#{personService.personuAl(shareCommitx.person.person_Id).person_Soyadi}
+														</td>
+														<td>&nbsp; <h:outputText
+																value="#{shareCommitx.shareCommitText}"
+																rendered="#{not shareCommitx.duzenleDurum}" />
+															#{shareCommitTextTutucu.setText(shareCommitx.shareCommitText)}
+															<h:inputText value="#{shareCommitTextTutucu.text}"
+																rendered="#{shareCommitx.duzenleDurum}" />
+														</td>
+														<td><c:if
+																test="#{shareCommitx.person.person_Id == mySession.person.person_Id}">
+																<table>
+																	<tr>
+																		<td><h:commandButton
+																				action="#{shareCommitService.deleteShareCommit(shareCommitx)}"
+																				image="/resources/images/delete.png" />
+																		</td>
+																		<td><h:commandButton
+																				rendered="#{not shareCommitx.duzenleDurum}"
+																				action="#{shareCommitService.updateShareCommitDuzenleDurum(true,shareCommitx)}"
+																				image="/resources/images/edit.png" />
+																		</td>
+																		<td><h:commandButton
+																				rendered="#{shareCommitx.duzenleDurum}"
+																				action="#{shareCommitService.updateShareCommitDuzenleDurum(false,shareCommitx,shareCommitTextTutucu.text)}"
+																				image="/resources/images/save.png" />
+																		</td>
+																	</tr>
+																</table>
+															</c:if></td>
+													</tr>
+												</h:form>
+												<tr>
+													<td colspan="3"><h:form>
+															<table>
+																<tr>
+																	<td>Yorum'a cevap ver :</td>
+																	<td><p:keyboard
+																			size="20" style="font-size:12pt"
+																			value="#{shareCR.shareCRText}" /></td>
+																	<td><h:commandButton
+																			action="#{shareCRService.saveShareCR(shareCR,share,shareCommitx)}"
+																			image="/resources/images/send_commit_cr.png" /></td>
+																</tr>
+															</table>
+														</h:form></td>
+												</tr>
+												<tr>
+													<td colspan="4">
+
+														<table>
+															
+																<tr>
+																	<td><b>Yoruma verilen cevaplar :</b></td>
+																	<td></td>
+																	<td></td>
+																</tr>
+															
+															<h:form>
+															<ui:repeat id="repeat3" var="shareCR" value="#{shareCRService.getShareCR(share,shareCommitx)}">
+																
+																	<tr>
+																		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:graphicImage
+																				height="80px"
+																				value="#{personService.personuAl(shareCR.person.person_Id).profilFotosunuVer()}" />
+																		</td>
+																		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																			#{personService.personuAl(shareCR.person.person_Id).person_Adi}
+																			#{personService.personuAl(shareCR.person.person_Id).person_Soyadi}
+																		</td>
+																		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+																			<h:outputText value="#{shareCR.shareCRText}"
+																				rendered="#{not shareCR.duzenleDurum}" />
+																			#{shareCRTextTutucu.setText(shareCR.shareCRText)} <h:inputText
+																				value="#{shareCRTextTutucu.text}"
+																				rendered="#{shareCR.duzenleDurum}" /> &nbsp;
+																		</td>
+																		<td><c:if
+																				test="#{shareCR.person.person_Id == mySession.person.person_Id}">
+																				<table>
+																					<tr>
+																						<td><h:commandButton
+																								action="#{shareCRService.deleteShareCR(shareCR)}"
+																								image="/resources/images/delete.png" /></td>
+																						<td><h:commandButton
+																								rendered="#{not shareCR.duzenleDurum}"
+																								action="#{shareCRService.updateShareCRDuzenleDurum(true,shareCR)}"
+																								image="/resources/images/edit.png" /></td>
+																						<td><h:commandButton
+																								rendered="#{shareCR.duzenleDurum}"
+																								action="#{shareCRService.updateShareCRDuzenleDurum(false,shareCR,shareCRTextTutucu.text)}"
+																								image="/resources/images/save.png" /></td>
+																					</tr>
+																				</table>
+																			</c:if></td>
+																	</tr>
+																</ui:repeat>
+															</h:form>
+														</table>
+													</td>
+												</tr>
+											></ui:repeat>
+
+										</table>
+									
+								</div>
+							</div>
+						</div>
+					</p:dataScroller>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+
+</html>
+

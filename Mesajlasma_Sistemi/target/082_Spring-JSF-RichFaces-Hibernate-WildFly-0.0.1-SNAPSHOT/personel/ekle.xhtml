@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Personel Ekle</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<center>
+			<rich:panel style="width:571px;">
+				<f:facet name="header">
+					<h:outputText value="PERSONEL EKLE" />
+				</f:facet>
+
+				<h:panelGrid id="panel" columns="2" border="0">
+
+					<h:outputLabel for="numarasi" value="Numarası : " />
+					<h:inputText id="numarasi" value="#{personel.numarasi}" />
+
+					<h:outputLabel for="adi" value="Adı : " />
+					<h:inputText id="adi" value="#{personel.adi}" />
+
+					<h:outputLabel for="soyadi" value="Soyadı : " />
+					<h:inputText id="soyadi" value="#{personel.soyadi}" />
+
+					<h:outputText value="Cinsiyeti : " />
+					<h:selectOneRadio id="cinsiyeti" layout="lineDirection"
+						value="#{personel.cinsiyeti}">
+						<f:selectItem id="kadin" itemValue="1" itemLabel="Kadın" />
+						<f:selectItem id="erkek" itemValue="2" itemLabel="Erkek" />
+					</h:selectOneRadio>
+
+					<h:outputLabel for="eposta" value="Eposta : " />
+					<h:inputText id="eposta" value="#{personel.eposta}" />
+
+					<h:outputLabel for="parolasi" value="Parolası : " />
+					<h:inputText id="parolasi" value="#{personel.parolasi}" />
+
+					<h:outputLabel />
+					<h:panelGroup>
+						<h:commandButton action="/index?faces-redirect=true"
+							value="    İptal    " />
+						<h:commandButton
+							action="#{personelService.personelEkle(personel)}"
+							value=" Tamam " image="/resources/images/tamam.png" />
+					</h:panelGroup>
+				</h:panelGrid>
+			</rich:panel>
+		</center>
+	</h:form>
+</h:body>
+</html>
+

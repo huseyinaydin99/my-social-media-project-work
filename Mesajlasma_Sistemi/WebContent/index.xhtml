@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Anasayfa</title>
+	<style type="text/css">
+@charset "iso-8859-9";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#anadiv {
+	height: 100%;
+	width: 100%;
+}
+
+#icanadiv {
+	height: 1024px;
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#baslik {
+	float: left;
+	height: 50px;
+	width: 100%;
+	background-color: #185886;
+}
+
+#icbaslik {
+	height: 50px;
+	width: 1074px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#logo {
+	float: left;
+	height: 50px;
+	width: 100px;
+	background-image: url(resources/images/logo.png);
+}
+
+#arama {
+	float: left;
+	height: 50px;
+	width: 474px;
+}
+
+#orta {
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+	min-height: 100%;
+	height: 94vh;
+}
+
+#alt {
+	float: left;
+	height: 6vh;
+	width: 100%;
+	background-color: #185886;
+}
+
+#mektup {
+	float: left;
+	height: 50px;
+	width: 50px;
+	line-height: 45px;
+	text-align: center;
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+#isim {
+	float: left;
+	height: 50px;
+	width: 190px;
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 45px;
+	color: #FFF;
+}
+
+#cikis {
+	float: left;
+	height: 50px;
+	width: 200px;
+}
+
+#anadiv #baslik #icbaslik #arama #icarama {
+	height: 50px;
+	width: 450px;
+	margin-left: 11px;
+	margin-top: 6px;
+}
+    </style>
+</h:head>
+<h:body>
+		<div id="anadiv">
+			<div id="baslik">
+				<div id="icbaslik">
+					<div id="logo"></div>
+					<div id="arama">
+						<div id="icarama"></div>
+					</div>
+					<div id="isim"></div>
+					<div id="mektup"></div>
+					<div id="cikis"></div>
+				</div>
+			</div>
+			<div id="orta">
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<center>
+					<table>
+						<th>Giriş</th>
+						<th>Kayıt</th>
+						<tr>
+							<td><h:form>
+									<table>
+										<tr>
+											<td><font face="verdana" size="5pt">Kullanıcı Adı
+													:</font></td>
+											<td><p:keyboard style="font-size:13pt"
+													value="#{person.person_Username}" /></td>
+										</tr>
+										<tr>
+											<td><font face="verdana" size="5pt">Şifre :</font></td>
+											<td><p:keyboard style="font-size:13pt"
+													value="#{person.person_Password}" password="true" /></td>
+										</tr>
+										<tr>
+											<td><font face="consolas" color="red">#{person.islem_Durumu}</font></td>
+											<td><h:commandButton
+													action="#{loginService.loginIn(person)}"
+													image="/resources/images/login.png" /></td>
+										</tr>
+									</table>
+									</h:form>
+								</td>
+							<td><br />
+							<h:form>
+									<table>
+										<tr>
+											<td><font face="verdana" size="5pt">Adı :</font></td>
+											<td><p:keyboard style="font-size:13pt"
+													value="#{person.person_Adi}" /></td>
+										</tr>
+										<tr>
+											<td><font face="verdana" size="5pt">Soyadı :</font></td>
+											<td><p:keyboard style="font-size:13pt"
+													value="#{person.person_Soyadi}" /></td>
+										</tr>
+										<tr>
+											<td><font face="verdana" size="5pt">Kullanıcı Adı
+													:</font></td>
+											<td><p:keyboard style="font-size:13pt"
+													value="#{person.person_Username}" /></td>
+										</tr>
+										<tr>
+											<td><font face="verdana" size="5pt">Şifre :</font></td>
+											<td><p:keyboard password="true" style="font-size:13pt"
+													value="#{person.person_Password}" /></td>
+										</tr>
+										<tr>
+											<td><font face="verdana" size="5pt">Doğum Tarihi
+													:</font></td>
+											<td><p:calendar style="font-size:13pt" id="german"
+													value="#{person.person_DTar}" locale="de" navigator="true" /></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td><h:commandButton
+													action="#{personService.personKaydet(person)}"
+													image="/resources/images/create_profile.png" /></td>
+										</tr>
+									</table>
+									</h:form>
+								</td>
+						</tr>
+					</table>
+				</center>
+			</div>
+			<div id="alt"></div>
+		</div>
+</h:body>
+
+</html>
+

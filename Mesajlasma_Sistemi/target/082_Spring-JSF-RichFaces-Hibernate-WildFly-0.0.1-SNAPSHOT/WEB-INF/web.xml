@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+id="WebApp_ID" version="3.1">
+<display-name>082_Spring-JSF-RichFaces-Hibernate-WildFly</display-name>
+    
+<!--Projenin durumu bilgisi-->
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Development</param-value>
+  </context-param>
+
+<!--Baslangıç selamlama sayfası-->
+   <welcome-file-list>
+     <welcome-file>index.jsf</welcome-file>  							
+   </welcome-file-list>
+  
+<!--JSF'yi başlatan FacesServlet sınıfı -->
+   <servlet>
+     <servlet-name>Faces Servlet</servlet-name>
+     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+     <load-on-startup>1</load-on-startup>
+   </servlet>
+   
+ <!--Kullanılmayan bir oturumun yok edilme zamanı -->  
+ 	<session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+      
+<!--JSF sayfalarının web tarayıcısında gösterileceği URL uzantısı-->
+   <servlet-mapping>
+     <servlet-name>Faces Servlet</servlet-name>
+     <url-pattern>*.jsf</url-pattern>
+   </servlet-mapping>
+
+
+  
+ <!-- Spring konteynerı yükleyip başlatan dinleyici sınıf -->
+   <listener>
+       <listener-class>
+           org.springframework.web.context.ContextLoaderListener
+       </listener-class>
+   </listener>   
+   
+ <!-- FacesServlet'e gelen HTTP isteklerinin Spring konteyner tarafından 
+ 	  görülüp algılanmasını sağlayan dinleyici sınıf -->
+   <listener>
+       <listener-class>
+          org.springframework.web.context.request.RequestContextListener
+       </listener-class>
+   </listener>
+
+</web-app>

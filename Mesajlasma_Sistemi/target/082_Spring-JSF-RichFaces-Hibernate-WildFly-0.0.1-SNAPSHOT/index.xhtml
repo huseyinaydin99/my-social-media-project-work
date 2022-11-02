@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<h:head>
+	<title>Anasayfa</title>
+</h:head>
+<h:body>
+	<h:form>
+		<center>
+			<rich:panel style="width:571px;">
+				<f:facet name="header">
+					<h:outputText value="PERSONEL TAKİP" />
+				</f:facet>
+
+				<br />
+				<h:graphicImage
+url="http://icons.iconarchive.com/icons/iconsmind/outline/256/Mens-icon.png">
+				</h:graphicImage>
+				<br />
+				
+<h:commandButton action="personel/listele?faces-redirect=true" value="Listele" />
+<h:commandButton action="personel/ara?faces-redirect=true" value="  Ara  " />
+<h:commandButton action="personel/ekle?faces-redirect=true" value="  Ekle " />
+<h:commandButton action="personel/listele?faces-redirect=true" value="Düzenle" />
+<h:commandButton action="personel/listele?faces-redirect=true" value="  Sil  " />
+			</rich:panel>
+		</center>
+	</h:form>	
+</h:body>
+
+</html>
+

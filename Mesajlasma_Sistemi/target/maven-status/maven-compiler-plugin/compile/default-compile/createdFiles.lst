@@ -1,0 +1,5 @@
+org/turkeyjug/dao/PersonelDAO.class
+org/turkeyjug/dao/PersonelDAOImpl.class
+org/turkeyjug/model/Personel.class
+org/turkeyjug/service/PersonelService.class
+org/turkeyjug/service/PersonelServiceImpl.class

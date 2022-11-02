@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#personel#ara.xhtml"
+  PATH="/personel/ara.xhtml" SHAPE="216,88,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>

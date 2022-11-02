@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.huseyinaydin.model.Share" table="share"
+		catalog="mesajlasma_sistemi">
+		<cache usage="read-write" />
+		<id name="share_Id" type="java.lang.Long">
+			<column name="share_id" />
+			<generator class="identity" />
+		</id>
+
+		<many-to-one name="person"
+			class="com.huseyinaydin.model.Person" fetch="select">
+			<column name="person_id" not-null="true" />
+		</many-to-one>
+
+		<property name="share_Images" type="string">
+			<column name="share_images" length="100" not-null="true" />
+		</property>
+
+		<property name="share_Text" type="string">
+			<column name="share_text" length="100" not-null="true" />
+		</property>
+
+		<property name="share_Date" type="date">
+			<column name="share_date" not-null="true" />
+		</property>
+
+		<set name="images" table="share_images" cascade="all"
+			inverse="true" lazy="false" fetch="select">
+			<key>
+				<column name="share_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.ShareImage" />
+		</set>
+
+		<set name="likes" table="likex" cascade="all" inverse="true"
+			lazy="false" fetch="select">
+			<key>
+				<column name="share_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.Likex" />
+		</set>
+
+		<set name="shareCommits" table="share_commits" cascade="all"
+			inverse="true" lazy="false" fetch="select">
+			<key>
+				<column name="share_Id" not-null="true" />
+			</key>
+			<one-to-many class="com.huseyinaydin.model.ShareCommit" />
+		</set>
+
+	</class>
+</hibernate-mapping>

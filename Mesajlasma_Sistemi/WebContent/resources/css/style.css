@@ -1,0 +1,68 @@
+<style type ="text/css">
+
+.tablo {
+	border-collapse: collapse;
+}
+
+.tablo-basligi {
+	text-align: center;
+	border-bottom: 2px solid cornflowerblue;
+	padding: 10px;
+	color: Navy;
+	font-weight: bold;
+	font-size: larger;
+	font-style: normal;
+	background-color: LightSkyBlue;
+}
+
+.tablo-tek-numarali-satir {
+	text-align: left;
+	background: none repeat scroll 0 0 azure;
+	border-color: LightBlue;
+	border-width: medium;
+	border-style: solid
+}
+
+.tablo-cift-numarali-satir {
+	text-align: left;
+	background: none repeat scroll 0 0 lemonchiffon;
+	border-color: Gold;
+	border-width: medium;
+	border-style: solid
+}
+
+.personelTablosu {
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-color: #C6C6C6;
+}
+
+.personelTablosu td {
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+	padding: 6px 4px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #C6C6C6;
+	color: #212121;
+	background-color: #F3FFF3;
+}
+
+.personelTablosu th {
+	font-family: Helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+	padding: 6px 4px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #C6C6C6;
+	color: #212121;
+	background-color: #F2F2F2;
+}
+
+</style>
+

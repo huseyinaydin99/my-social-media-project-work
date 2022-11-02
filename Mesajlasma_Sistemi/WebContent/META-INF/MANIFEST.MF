@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: D:\yedekss\Documents\workspace-sts-3.8.4.RELEASE\Mesajlasma_Sistemi\src\main\java\com\huseyinaydin
+
