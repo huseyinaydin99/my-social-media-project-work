@@ -1,0 +1,11 @@
+Klasik 3 katmanlı mimari.
+----------------------
+Java Server Faces
+Presentation Layer
+----------------------
+Service Layer
+Spring Framework
+----------------------
+Hibernate / JPA
+Data Access Object / Layer
+----------------------
