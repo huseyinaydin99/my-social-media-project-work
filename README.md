@@ -1,4 +1,7 @@
 Video linki: https://www.youtube.com/watch?v=YCzz6SRpV94
+Tasarım konusunda bayağı bir ilkel ama geri planı iyi. Zaten amacım Java, Hibernate, Spring Framework, MySQL, XML konularında bildiğimi uygulayabilmekti.
+Amacım tasarım yapmak değildi.
+
 Görseller 
 <img src="https://www.technopat.net/sosyal/eklenti/30265254_1671023332932915_5624508571761770496_n-png.1573778/" />
 <img src="https://www.technopat.net/sosyal/eklenti/ekran-goeruentuesue-2022-11-15-203034-png.1573779/" />
